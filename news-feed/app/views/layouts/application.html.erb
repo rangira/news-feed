@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>NewsForum</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<style type="text/css">
+  .alert{
+    color :red;
+  }
+</style>
+<div class="container">
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">News Forum</a>
+    </div>
+    <ul class="nav navbar-nav">
+     <% if user_signed_in? %>
+    <li><%= link_to 'New Article', new_article_path %></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+    <li><%= link_to 'Sign_Out', destroy_user_session_path, method: :delete %></li>
+    <li><%= current_user.email %></li> 
+      <% else %>
+      <li><%= link_to 'Sign in', new_user_session_path %></a></li> |
+      <li><%= link_to 'Register', new_user_registration_path %></a></li>
+    </ul>
+    <% end %>
+  </div>
+</nav>
+  <p class="alert"><%= alert %>
+  
+</div>
+
+<%= yield %>
+
+</body>
+</html>

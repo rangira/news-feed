@@ -1,0 +1,26 @@
+<p id="notice"><%= notice %></p>    
+<div class="container">
+    <% @articles.each do |article| %>
+    <ul>
+        <li><a href="<%= article.link %>" target="/"><h5><%= article.title %></h5></a></li>      
+        <% if user_signed_in? && article.user_id == current_user.id %>
+        <%= link_to 'Show', article %> |
+        <%= link_to 'Edit', edit_article_path(article) %> |
+        <%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <% end %>
+        </li>
+        <br/>
+        <div class="btn-group">
+         <%= link_to like_article_path(article), method: :put, class: "btn btn-default btn-sm" do %>
+         <span class="glyphicon glyphicon-chevron-up"></span>
+         Upvote
+         <%= article.get_upvotes.size %>
+         <% end %>
+         </div>
+        <hr class="divider"></p>
+        </ul>
+     <% end %> 
+</div>
+<br>
+
+<%= will_paginate @posts %>
