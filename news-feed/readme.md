@@ -1,4 +1,4 @@
-Hi,
+
 
 I have used Rails framework version 4.2.6 with ruby version 2.2.3 to complete the assignment and few open source gems mentioned below with their purpose. Also I have used postgresql version 1.8.1 as db, as that it was available as free with heroku and even though could have done sqlite too but being in memory db it becomes too volatile to use with heroku because of the frequent cleanup.
 Few Important Gems used:-
